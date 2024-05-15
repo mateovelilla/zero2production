@@ -31,6 +31,22 @@ On MacOs
 - [Cargo Clippy](https://github.com/rust-lang/rust-clippy)
 - [Cargo Fmt](https://github.com/rust-lang/rustfmt)
 - [Activex Web](https://github.com/actix/actix-web)
+- [Bastion](https://www.bastion-rs.com/)
+- [Cargo expand](https://github.com/dtolnay/cargo-expand)
+
+## Useful Commands
+- Expand code:
+```
+    cargo expand
+```
+- Install unstable compiler
+```
+rustup toolchain install nightly --allow-downgrade
+```
+- Change to default compiler
+```
+    rustup default
+```
 
 ### Concepts
 - [Trunk-Based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development): ` is a version control management practice where developers merge small, frequent updates to a core “trunk” or main branch. Since it streamlines merging and integration phases, it helps achieve CI/CD and increases software delivery and organizational performance. In the early days of software development, programmers didn’t have the luxury of modern version control systems. Rather, they developed two versions of their software concurrently as a means of tracking changes and reversing them if necessary. Over time, this process proved to be labor-intensive, costly, and inefficient.`
