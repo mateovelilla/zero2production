@@ -24,6 +24,8 @@ On MacOs
 # brew install michaeleisel/zld/zld 
 ```
 
+#### Note: Try to use the unit tests in the same file and the integration test in external folder
+
 ### Tools
 - [Rust Analyzer](https://rust-analyzer.github.io/)
 - [Cargo Watch](https://crates.io/crates/cargo-watch)
