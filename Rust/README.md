@@ -35,6 +35,7 @@ On MacOs
 - [Activex Web](https://github.com/actix/actix-web)
 - [Bastion](https://www.bastion-rs.com/)
 - [Cargo expand](https://github.com/dtolnay/cargo-expand)
+- [Serde](https://serde.rs/)
 
 ## Useful Commands
 - Expand code:
@@ -50,8 +51,15 @@ rustup toolchain install nightly --allow-downgrade
     rustup default
 ```
 
+### Articles To Read
+
+- [Understading Serde](https://www.joshmcguigan.com/blog/understanding-serde/)
+
 ### Concepts
 - [Trunk-Based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development): ` is a version control management practice where developers merge small, frequent updates to a core “trunk” or main branch. Since it streamlines merging and integration phases, it helps achieve CI/CD and increases software delivery and organizational performance. In the early days of software development, programmers didn’t have the luxury of modern version control systems. Rather, they developed two versions of their software concurrently as a means of tracking changes and reversing them if necessary. Over time, this process proved to be labor-intensive, costly, and inefficient.`
+
+- [Extractors(actix)](https://actix.rs/docs/extractors): facilities for type-safe request information access
+- [Monomorphization](https://en.wikipedia.org/wiki/Monomorphization): is a compile-time process where polymorphic functions are replaced by many monomorphic functions for each unique instantiation.[1] It is considered beneficial to undergo the mentioned transformation because it results in the output intermediate representation (IR) having specific types, which allows for more effective optimization. Additionally, many IRs are intended to be low-level and do not accommodate polymorphism. The resulting code is generally faster than dynamic dispatch, but may require more compilation time and storage space due to duplicating the function body.
 - CI Steps:
     - Tests
     ```
