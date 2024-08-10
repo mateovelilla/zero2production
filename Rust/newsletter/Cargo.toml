@@ -14,9 +14,22 @@ name="newsletter"
 
 
 [dependencies]
+config = "0.13"
 actix-web = "4.5.1"
 serde = {version = "1", features = ["derive"] }
 tokio = {version = "1", features = ["macros", "rt-multi-thread"]}
+
+[dependencies.sqlx]
+version = "0.6"
+default-features = false
+features = [
+    "runtime-tokio-rustls", # thell to SQLX to use tokio like runtime with TLS backend
+    "macros", # this feature give us acess to sqlx::query! and SQLX::query_as!
+    "postgres", # unlock postgres use
+    "uuid", # unlock support to UUID in Postgres
+    "chrono", # add support to SQL timestamptz
+    "migrate" # give us access to the same functions used under the hood by sqlx-cli
+]
 
 [dev-dependencies]
 reqwest = "0.12.4"
