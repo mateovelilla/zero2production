@@ -32,10 +32,14 @@ On MacOs
 - [Cargo Tarpaulin](https://github.com/xd009642/tarpaulin)
 - [Cargo Clippy](https://github.com/rust-lang/rust-clippy)
 - [Cargo Fmt](https://github.com/rust-lang/rustfmt)
-- [Activex Web](https://github.com/actix/actix-web)
+- [Actix Web](https://github.com/actix/actix-web)
+    - [Actix Logeer](https://actix.rs/docs/middleware/#logging) 
 - [Bastion](https://www.bastion-rs.com/)
 - [Cargo expand](https://github.com/dtolnay/cargo-expand)
 - [Serde](https://serde.rs/)
+- [env_logger](https://crates.io/crates/env_logger)
+- [tracing](https://crates.io/crates/tracing)
+
 
 ## Useful Commands
 - Expand code:
@@ -67,6 +71,7 @@ Note that Data should be constructed outside the HttpServer::new closure if shar
 - [Monomorphization](https://en.wikipedia.org/wiki/Monomorphization): is a compile-time process where polymorphic functions are replaced by many monomorphic functions for each unique instantiation.[1] It is considered beneficial to undergo the mentioned transformation because it results in the output intermediate representation (IR) having specific types, which allows for more effective optimization. Additionally, many IRs are intended to be low-level and do not accommodate polymorphism. The resulting code is generally faster than dynamic dispatch, but may require more compilation time and storage space due to duplicating the function body.
 - [move](https://doc.rust-lang.org/std/keyword.move.html): converts any variables captured by reference or mutable reference to variables captured by value.
 - [r#](https://doc.rust-lang.org/reference/tokens.html#raw-string-literals): Raw string literals do not process any escapes. They start with the character U+0072 (r), followed by fewer than 256 of the character U+0023 (#) and a U+0022 (double-quote) character.
+- [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization): is a programming idiom[2] used in several object-oriented, statically typed programming languages to describe a particular language behavior. In RAII, holding a resource is a class invariant, and is tied to object lifetime. Resource allocation (or acquisition) is done during object creation (specifically initialization), by the constructor, while resource deallocation (release) is done during object destruction (specifically finalization), by the destructor. In other words, resource acquisition must succeed for initialization to succeed. Thus the resource is guaranteed to be held between when initialization finishes and finalization starts (holding the resources is a class invariant), and to be held only when the object is alive. Thus if there are no object leaks, there are no resource leaks. 
 - CI Steps:
     - Tests
     ```

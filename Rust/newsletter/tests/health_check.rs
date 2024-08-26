@@ -1,12 +1,19 @@
 // Integration tests
 use sqlx::{Connection, Executor, PgConnection, PgPool};
 use newsletter::configuration::{ get_configuration, DatabaseSettings };
+use newsletter::startup::run;
+use newsletter::telemetry::{get_subscriber, init_subscriber};
 use std::net::TcpListener;
 use uuid::Uuid;
+use once_cell::sync::Lazy;
 pub struct TestApp {
     pub address: String,
     pub db_pool: PgPool
 }
+static TRACING: Lazy<()> = Lazy::new(|| {
+    let subscriber = get_subscriber("test".into(), "debug".into());
+    init_subscriber(subscriber);
+});
 pub async fn configure_database(config: &DatabaseSettings) -> PgPool {
     // create database
     let mut connection = PgConnection::connect(
@@ -34,13 +41,16 @@ pub async fn configure_database(config: &DatabaseSettings) -> PgPool {
     connection_pool
 }
 async fn spawn_app() -> TestApp {
+    Lazy::force(&TRACING);
+    let subscriber = get_subscriber("test".into(),"debug".into());
+    init_subscriber(subscriber);
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind address"); // When we define a connection with a port in 0 then the S.O search a port enable to create the connection
     let port = listener.local_addr().unwrap().port();
     let address = format!("http://127.0.0.1:{}", port);
     let mut configuration = get_configuration().expect("Failed to read configuration");
     configuration.database.database_name = Uuid::new_v4().to_string();
     let connection_pool = configure_database(&configuration.database).await;
-    let server = newsletter::startup::run(listener, connection_pool.clone()).expect("Failed to bind adress"); // When we define a connection with a port in 0 then the S.O search a port enable to create the connection
+    let server = run(listener, connection_pool.clone()).expect("Failed to bind adress"); // When we define a connection with a port in 0 then the S.O search a port enable to create the connection
     let _ = tokio::spawn(server);
     TestApp {
         address,
