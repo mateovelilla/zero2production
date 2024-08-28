@@ -97,3 +97,5 @@ Note that Data should be constructed outside the HttpServer::new closure if shar
     ```
         cargo audit
     ```
+### Reference
+- https://doc.rust-lang.org/nomicon/hrtb.html
